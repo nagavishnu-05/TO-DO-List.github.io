@@ -1,0 +1,50 @@
+body, html {
+    width: 98%;
+    height: 98%;
+    font-family: Gerogia, serif;
+}
+#box {
+    width: 500px;
+    height: auto;
+    border: 5px solid white;
+    border-color: white;
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 6px;
+    position: relative;
+    top: 155px;
+    left: 700px;
+    padding: 20px;
+}
+h1 {
+    color: red;
+    position: relative;
+    left: 170px;
+}
+hr {
+    border: 1px solid black;
+    border-color: whitesmoke;
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px;
+}
+.task {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+#submitButton {
+    width: 250px;
+    height: 35px;
+    position: relative;
+    top: 20px;
+    left: 120px;
+    background-color: white;
+    border: 2px solid white;
+    border-color: white;
+    box-shadow: rgb(204, 219, 232) 1px 1px 2px 2px;
+}
+#obox {
+    position: relative;
+    left: 0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    flex: 1;
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Output</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body, html {
+            width: 98%;
+            height: 98%;
+            font-family: Gerogia, serif;
+        }
+        #box {
+            width: 500px;
+            height: auto;
+            border: 5px solid white;
+            border-color: white;
+            box-shadow: rgb(204, 219, 232) 3px 3px 6px 6px;
+            position: relative;
+            top: 155px;
+            left: 700px;
+            padding: 20px;
+        }
+        h1 {
+            color: red;
+            position: relative;
+            left: 170px;
+        }
+        hr {
+            border: 1px solid black;
+            border-color: whitesmoke;
+            box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px;
+        }
+        .task {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+        #submitButton {
+            width: 250px;
+            height: 35px;
+            position: relative;
+            top: 20px;
+            left: 120px;
+            background-color: white;
+            border: 2px solid white;
+            border-color: white;
+            box-shadow: rgb(204, 219, 232) 1px 1px 2px 2px;
+        }
+        #obox {
+            position: relative;
+            left: 0;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <h1>Your Tasks</h1>
+        <hr>
+        
+        <div id="taskList"></div>
+
+        <button id="submitButton">Submit</button>
+    </div>
+    
+    <script>
+        let taskList = document.getElementById("taskList");
+        let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+        tasks.forEach((task, index) => {
+            let taskDiv = document.createElement("div");
+            taskDiv.className = "task";
+            taskDiv.innerHTML = `
+                <input type="checkbox" id="task_${index}"/>
+                <div id="obox">
+                    <strong>Task:</strong> ${task.name}<br>
+                    <strong>Description:</strong> ${task.desc}<br>
+                    <strong>Due Date:</strong> ${task.date}
+                </div>
+            `;
+            taskList.appendChild(taskDiv);
+        });
+
+        document.getElementById("submitButton").addEventListener("click", () => {
+            let updatedTasks = [];
+
+            tasks.forEach((task, index) => {
+                if (!document.getElementById(`task_${index}`).checked) {
+                    updatedTasks.push(task);
+                }
+            });
+
+            localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+
+            location.reload();
+        });
+    </script>
+</body>
+</html>
